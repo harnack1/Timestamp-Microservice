@@ -25,20 +25,21 @@ app.get("/api/:date?", (req, res) => {
   
   let time = !isNaN(input) ? parseInt(input) : (input || Date.now());
     
-    let date = new Date(time);
+  let date = new Date(time);
     
-    if(isNaN(date))
-        res.json({
-          error: "Invalid Date"
-        });
-    else
-        res.json({
-          unix: parseInt(date.getTime()),
-          utc: date.toUTCString() 
-        });
+  if(isNaN(date))
+      res.json({
+        error: "Invalid Date"
+      });
+  else
+      res.json({
+        unix: parseInt(date.getTime()),
+        utc: date.toUTCString() 
+      });
 });
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
+
